@@ -1,10 +1,9 @@
-import React from 'react';
-import CounterContainer from "./Container/CounterContainer";
+import TodoContainer from "./Container/TodoContainer";
 
 function App() {
   return (
     <div>
-      <CounterContainer/>
+      <TodoContainer/>
     </div>
   );
 }
