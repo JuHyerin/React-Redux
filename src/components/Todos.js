@@ -1,6 +1,9 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 
-function TodoItem ({todo, onToggle}) {
+const TodoItem = React.memo(function TodoItem ({todo, onToggle}) {
+    console.log("TodoItem rendered", todo.id);
+
+
     const onClick = () => onToggle(todo.id);
     return (
         <li
@@ -11,18 +14,23 @@ function TodoItem ({todo, onToggle}) {
             {todo.text}
         </li>
     );
-}
+});
 
-function TodoList ({todos, onToggle}) {
+const TodoList = React.memo(function TodoList ({todos, onToggle}) {
+    console.log("TodoList rendered");
+
     return (
         <ul>
             {todos.map(todo => (
-                <TodoItem todo={todo} onToggle={onToggle}/>
+                <TodoItem key={todo.id} todo={todo} onToggle={onToggle}/>
             ))}
         </ul>
     );
-}
+});
+
 function Todos({todos, onCreate, onToggle}) {
+    console.log("Todos rendered");
+
     const [text, setText] = useState('');
     const onChange = e => setText(e.target.value);
     const onSubmit = e => {
@@ -47,4 +55,4 @@ function Todos({todos, onCreate, onToggle}) {
     );
 }
 
-export default Todos;
+export default React.memo(Todos);
