@@ -1,9 +1,12 @@
 import TodoContainer from "./Container/TodoContainer";
+import CounterContainer from "./Container/CounterContainer";
 
 function App() {
   return (
     <div>
-      <TodoContainer/>
+        <CounterContainer/>
+        <hr/>
+        <TodoContainer/>
     </div>
   );
 }
